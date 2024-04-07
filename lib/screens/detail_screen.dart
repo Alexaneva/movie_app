@@ -71,7 +71,7 @@ class DetailScreen extends StatelessWidget {
                     ),
                     textAlign: TextAlign.justify,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
