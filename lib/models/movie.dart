@@ -17,6 +17,10 @@ class Movie {
     required this.voteAverage,
   });
 
+  DateTime getReleaseDateTime() {
+    return DateTime.parse(releaseDate);
+  }
+
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       title: json["title"],
@@ -28,5 +32,4 @@ class Movie {
       voteAverage: json["vote_average"].toDouble(),
     );
   }
-
 }

@@ -79,12 +79,12 @@ class DetailScreen extends StatelessWidget {
                           top: BorderSide(width: 1.0, color: Colors.white)),
                     ),
                     child: Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         const Icon(
                           Icons.star,
                           color: Color(0xFFFBC02D),
                         ),
-                        const SizedBox(width: 2),
                         Text(
                           movie.voteAverage.toString(),
                           style: GoogleFonts.abhayaLibre(
@@ -95,7 +95,7 @@ class DetailScreen extends StatelessWidget {
                         ),
                         const SizedBox(width: 130),
                         Text(
-                         'Release date: ${movie.releaseDate}',
+                         'Release date: ${movie.getReleaseDateTime().year}',
                           style: GoogleFonts.abhayaLibre(
                             color: Colors.white,
                             fontSize: 18,
