@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:movie_app/services/constants.dart';
 
 import '../models/movie.dart';
@@ -12,6 +11,8 @@ class ApiService {
       'https://api.themoviedb.org/3/movie/top_rated?api_key=${Constants.apiKey}';
   static const _upComingUrl =
       'https://api.themoviedb.org/3/movie/upcoming?api_key=${Constants.apiKey}';
+  static const _nowPlaying =
+      'https://api.themoviedb.org/3/movie/now_playing?api_key=${Constants.apiKey}';
 
   Future<List<Movie>> getTrendingMovies() async {
     final response = await http.get(Uri.parse(_trendingUrl));
@@ -35,6 +36,16 @@ class ApiService {
 
   Future<List<Movie>> upComingMovie() async {
     final response = await http.get(Uri.parse(_upComingUrl));
+    if (response.statusCode == 200) {
+      final decodedData = json.decode(response.body)['results'] as List;
+      return decodedData.map((movie) => Movie.fromJson(movie)).toList();
+    } else {
+      throw Exception('Something happened');
+    }
+  }
+
+  Future<List<Movie>> nowPlaying() async {
+    final response = await http.get(Uri.parse(_nowPlaying));
     if (response.statusCode == 200) {
       final decodedData = json.decode(response.body)['results'] as List;
       return decodedData.map((movie) => Movie.fromJson(movie)).toList();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../services/constants.dart';
-import 'detail_screen.dart';
+import '../../services/constants.dart';
+import '../detail_screen.dart';
 
 class UpComingMovies extends StatelessWidget {
   const UpComingMovies({super.key, required this.snapshot});

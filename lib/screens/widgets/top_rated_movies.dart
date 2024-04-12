@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../services/constants.dart';
-import 'detail_screen.dart';
+import '../../services/constants.dart';
+import '../detail_screen.dart';
 
 class TopRatedMovies extends StatelessWidget {
   const TopRatedMovies({super.key, required this.snapshot});

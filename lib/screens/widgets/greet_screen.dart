@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import 'main_screen.dart';
+import '../home_screen.dart';
 
 class GreetScreen extends StatefulWidget {
   const GreetScreen({super.key});
@@ -17,7 +17,7 @@ class _GreetScreenState extends State<GreetScreen> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const MainScreen()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
     });
   }

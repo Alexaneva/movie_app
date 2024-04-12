@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:movie_app/screens/greet_screen.dart';
+import 'package:movie_app/screens/widgets/greet_screen.dart';
 
 void main() {
   runApp(const MyApp());

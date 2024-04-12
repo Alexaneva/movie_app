@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie_app/screens/top_rated_movies.dart';
-import 'package:movie_app/screens/trending.dart';
-import 'package:movie_app/screens/upcoming_movies.dart';
+import 'package:movie_app/screens/widgets/top_rated_movies.dart';
+import 'package:movie_app/screens/widgets/trending.dart';
+import 'package:movie_app/screens/widgets/upcoming_movies.dart';
 import 'package:movie_app/screens/widgets/fade_animation.dart';
 import 'package:movie_app/services/api_service.dart';
 
@@ -19,6 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   late Future<List<Movie>> trendingMovies;
   late Future<List<Movie>> topRatingMovies;
   late Future<List<Movie>> upComingMovie;
+
 
   @override
   void initState() {

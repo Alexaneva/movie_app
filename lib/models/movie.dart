@@ -21,6 +21,7 @@ class Movie {
     return DateTime.parse(releaseDate);
   }
 
+
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       title: json["title"],

@@ -4,11 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../models/movie.dart';
 import '../services/constants.dart';
+import 'favourite_movie_page.dart';
 
-class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key, required this.movie});
+class DetailScreen extends StatefulWidget {
+  const DetailScreen({Key? key, required this.movie});
 
   final Movie movie;
+
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  late List<Movie> favoriteMovies;
 
   @override
   Widget build(BuildContext context) {
@@ -36,22 +44,15 @@ class DetailScreen extends StatelessWidget {
             pinned: true,
             floating: true,
             flexibleSpace: FlexibleSpaceBar(
-              // title: Text(
-              //   movie.title,
-              //   style: GoogleFonts.aBeeZee(
-              //     fontSize: 17,
-              //     color: Colors.white,
-              //     fontWeight: FontWeight.w600,
-              //   ),
-              // ), titlePadding: EdgeInsets.only(bottom: 20),
-              // centerTitle: true,
+              titlePadding: const EdgeInsets.only(bottom: 20),
+              centerTitle: true,
               background: ClipRRect(
                 borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(24),
                   bottomRight: Radius.circular(24),
                 ),
                 child: Image.network(
-                  '${Constants.imagePath}${movie.posterPath}',
+                  '${Constants.imagePath}${widget.movie.posterPath}',
                   filterQuality: FilterQuality.high,
                   fit: BoxFit.cover,
                 ),
@@ -64,7 +65,7 @@ class DetailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    movie.overview,
+                    widget.movie.overview,
                     style: GoogleFonts.abhayaLibre(
                       color: Colors.white,
                       fontSize: 18,
@@ -79,29 +80,38 @@ class DetailScreen extends StatelessWidget {
                           top: BorderSide(width: 1.0, color: Colors.white)),
                     ),
                     child: Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         const Icon(
                           Icons.star,
                           color: Color(0xFFFBC02D),
                         ),
                         Text(
-                          movie.voteAverage.toString(),
+                          widget.movie.voteAverage.toString(),
                           style: GoogleFonts.abhayaLibre(
                             color: Colors.white,
                             fontSize: 18,
                           ),
                           textAlign: TextAlign.justify,
                         ),
-                        const SizedBox(width: 130),
+                        const SizedBox(width: 20),
                         Text(
-                         'Release date: ${movie.getReleaseDateTime().year}',
+                          'Release date: ${widget.movie.getReleaseDateTime().year}',
                           style: GoogleFonts.abhayaLibre(
                             color: Colors.white,
                             fontSize: 18,
                           ),
                           textAlign: TextAlign.justify,
                         ),
+                        const SizedBox(width: 20),
+                        IconButton(
+                            onPressed: () {
+                              addToFavorites(widget.movie);
+                            },
+                            icon: const Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            )),
                       ],
                     ),
                   )
@@ -112,5 +122,12 @@ class DetailScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void addToFavorites(Movie movie) {
+    if (!favoriteMovies.contains(movie)) {
+      favoriteMovies.add(movie);
+    }
+    Get.to(FavouritePage(favoriteMovies: favoriteMovies));
   }
 }
