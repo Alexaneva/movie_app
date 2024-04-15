@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/movie.dart';
 import '../services/constants.dart';
 import 'favourite_movie_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({Key? key, required this.movie});
@@ -16,7 +19,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  late List<Movie> favoriteMovies;
+  late List<Movie> favoriteMovies = [];
 
   @override
   Widget build(BuildContext context) {
@@ -124,10 +127,18 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  void addToFavorites(Movie movie) {
+  Future<void> addToFavorites(Movie movie) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> favoriteMovieStrings =
+        prefs.getStringList('favoriteMovies') ?? [];
+    List<Movie> favoriteMovies =
+        favoriteMovieStrings.map((e) => Movie.fromJson(jsonDecode(e))).toList();
+
     if (!favoriteMovies.contains(movie)) {
       favoriteMovies.add(movie);
+      List<String> updatedFavoriteMovieStrings =
+          favoriteMovies.map((e) => jsonEncode(e.toJson())).toList();
+      prefs.setStringList('favoriteMovies', updatedFavoriteMovieStrings);
     }
-    Get.to(FavouritePage(favoriteMovies: favoriteMovies));
   }
 }

@@ -87,8 +87,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           borderRadius: BorderRadius.circular(12),
                           child: Column(
                             children: [
-                              Container(
-                                color: Colors.red,
+                              SizedBox(
                                 height: 140,
                                 width: 200,
                                 child: Image.network(

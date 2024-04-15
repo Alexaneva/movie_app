@@ -21,6 +21,18 @@ class Movie {
     return DateTime.parse(releaseDate);
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'backdrop_path': backDropPath,
+      'original_title': originalTitle,
+      'overview': overview,
+      'poster_path': posterPath,
+      'release_date': releaseDate,
+      'vote_average': voteAverage,
+    };
+  }
+
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
