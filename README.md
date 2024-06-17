@@ -1,16 +1,19 @@
-# movie_app
+# 𝙢𝙤𝙫𝙞𝙚_𝙖𝙥𝙥
 
-A new Flutter project.
 
-## Getting Started
+## Features
+Trending Movie List
+UpComing Movie List
+Top rated Movie List
+Detail Movie
+Favorite Movies
 
-This project is a starting point for a Flutter application.
+## Tech Stack
+Shared_preferences
+Get
+HTTP package
+API integration
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://github.com/Alexaneva/movie_app/assets/104970950/4eb396e0-c46c-4443-b69a-8aa6150596d7
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
