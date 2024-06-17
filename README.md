@@ -2,17 +2,17 @@
 
 
 ## Features
-Trending Movie List
-UpComing Movie List
-Top rated Movie List
-Detail Movie
+Trending Movie List <br>
+UpComing Movie List <br>
+Top rated Movie List <br>
+Detail Movie <br>
 Favorite Movies
 
 ## Tech Stack
-Shared_preferences
-Get
-HTTP package
-API integration
+Shared_preferences <br>
+Get <br>
+HTTP package <br>
+API integration <br>
 
 
 https://github.com/Alexaneva/movie_app/assets/104970950/4eb396e0-c46c-4443-b69a-8aa6150596d7
